@@ -24,6 +24,7 @@ class Serial
       dcb[:bytesize] = data_bits
       dcb[:stopbits] = RubySerial::Win32::DCB::ONESTOPBIT
       dcb[:parity]   = RubySerial::Win32::DCB::NOPARITY
+      dcb[:flags]    = 1
       err = RubySerial::Win32.SetCommState @fd, dcb
       if err == 0
         raise RubySerial::Exception, RubySerial::Win32::ERROR_CODES[FFI.errno]
